@@ -1,0 +1,11 @@
+services:
+  services:
+    build:
+      context: .
+    environment:
+      HOST: 0.0.0.0
+      PORT: 7003
+      SIMULATOR_ENGINE_1_URL: http://host.docker.internal:7011/api/v1/telemetry/latest
+      SIMULATOR_ENGINE_2_URL: http://host.docker.internal:7012/api/v1/telemetry/latest
+    ports:
+      - "7003:7003"

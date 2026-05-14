@@ -45,6 +45,40 @@ export interface KpiCardContent {
   value: string;
 }
 
+export type SimulatorEngineId = 'simulator-engine-1' | 'simulator-engine-2';
+
+export interface SimulatorFlightTelemetry {
+  flightId: string;
+  route: string;
+  checkedIn: number;
+  exceptions: number;
+  completionPercent: number;
+  queueDepth: number;
+  latencyMs: number;
+}
+
+export interface SimulatorTelemetryEvent {
+  engineId: SimulatorEngineId;
+  sequence: number;
+  emittedAt: string;
+  intervalMs: number;
+  flights: SimulatorFlightTelemetry[];
+}
+
+export interface ConsolidatedEngineTelemetry {
+  engineId: SimulatorEngineId;
+  sequence: number;
+  emittedAt: string;
+  intervalMs: number;
+  flightCount: number;
+}
+
+export interface ConsolidatedTelemetry {
+  generatedAt: string;
+  engines: ConsolidatedEngineTelemetry[];
+  flights: SimulatorFlightTelemetry[];
+}
+
 export interface CheckInDashboard {
   generatedAt: string;
   header: {
@@ -69,4 +103,5 @@ export interface CheckInDashboard {
   kpiCards: KpiCardContent[];
   kpis: DeliveryKpis;
   flights: FlightReadiness[];
+  telemetry: ConsolidatedTelemetry;
 }

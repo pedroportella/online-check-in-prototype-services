@@ -95,5 +95,10 @@ export const dashboard: CheckInDashboard = {
       exceptions: 4,
       stages: { identity: 'green', bags: 'green', seats: 'green', docs: 'green', boardingPass: 'green' }
     }
-  ]
+  ],
+  telemetry: {
+    generatedAt: new Date('2026-05-13T04:30:00.000Z').toISOString(),
+    engines: [],
+    flights: []
+  }
 };
